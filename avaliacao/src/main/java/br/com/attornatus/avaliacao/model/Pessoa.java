@@ -31,7 +31,7 @@ public class Pessoa {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate nascimento;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private Endereco endereco;
 
 
@@ -75,6 +75,5 @@ public class Pessoa {
 	}
 	
 		
-	
-	
+		
 }

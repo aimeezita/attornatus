@@ -61,6 +61,8 @@ public class PessoaController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(pessoaRepository.save(pessoa));
 	}
 	
+	
+	
 //	@PostMapping("/cadastrar")
 //	public ResponseEntity<Pessoa> postPessoa(@Valid @RequestBody Pessoa pessoa) {
 //
