@@ -35,6 +35,26 @@ public class Pessoa {
 	private Endereco endereco;
 
 
+	
+	//Método Construtor  - Com os atributos
+	
+	//verificar se endereço deve estar aí, pois o endereço é inserido depois segundo a regra de negócio
+	
+	public Pessoa(Long id, String nome, LocalDate nascimento, Endereco endereco) {
+	
+		this.id = id;
+		this.nome = nome;
+		this.nascimento = nascimento;
+		this.endereco = endereco;
+	}
+
+
+	//Construtor  - Sem atributos
+	public Pessoa() { };
+	
+
+
+
 	public Long getId() {
 		return id;
 	}
