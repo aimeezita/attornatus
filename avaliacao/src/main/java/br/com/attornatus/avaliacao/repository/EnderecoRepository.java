@@ -16,5 +16,5 @@ public interface EnderecoRepository extends JpaRepository<Endereco, Long>{
 	public Optional<Endereco> findByCep(String cep);
 	
 
-//	public List<Endereco> findAllByIdContainingIgnoreCase(@Param("id") String id);
+	public List<Endereco> findAllById(@Param("id") String id);
 }

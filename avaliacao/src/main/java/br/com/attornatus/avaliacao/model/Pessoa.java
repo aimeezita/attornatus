@@ -5,11 +5,14 @@ import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
@@ -28,10 +31,12 @@ public class Pessoa {
 	private String nome;
 	
 	@NotNull(message = "O atributo data de nascimento é obrigatório")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate nascimento;
 	
 	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name="endereco_id")
+	@JsonIgnoreProperties("pessoa")
 	private Endereco endereco;
 
 
@@ -94,6 +99,6 @@ public class Pessoa {
 		this.endereco = endereco;
 	}
 	
-		
+	
 		
 }

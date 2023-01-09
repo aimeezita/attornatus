@@ -48,10 +48,9 @@ public class PessoaController {
 	}
 	
 	@GetMapping("/nome/{nome}")
-	public ResponseEntity<Pessoa> getByNome(@PathVariable String nome) {
-		return pessoaRepository.findByNome(nome)
-			.map(resposta -> ResponseEntity.ok(resposta))
-			.orElse(ResponseEntity.notFound().build());
+	public ResponseEntity<List<Pessoa>> getByNome(@PathVariable String nome) {
+		return ResponseEntity.ok(pessoaRepository.findAllByNomeContainingIgnoreCase(nome));
+			
 	}
 	
 	
@@ -63,17 +62,7 @@ public class PessoaController {
 	
 	
 	
-//	@PostMapping("/cadastrar")
-//	public ResponseEntity<Pessoa> postPessoa(@Valid @RequestBody Pessoa pessoa) {
-//
-//		if (enderecoRepository.existsById(pessoa.getEndereco().getId()))
-//			return ResponseEntity.status(HttpStatus.CREATED).body(pessoaRepository.save(pessoa));
-//	
-//		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-//		
-//		
-//
-//	}
+
 
 
 	@PutMapping("/atualizar")

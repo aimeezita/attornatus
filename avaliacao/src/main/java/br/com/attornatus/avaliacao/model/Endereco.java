@@ -18,6 +18,8 @@ import jakarta.validation.constraints.NotNull;
 public class Endereco {
 
 	
+	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -33,6 +35,20 @@ public class Endereco {
 	
 	@NotNull(message = "O atributo Cidade é obrigatório")
 	private String cidade;
+	
+	@OneToOne(mappedBy = "endereco")
+	@JsonIgnoreProperties("endereco")
+	private Pessoa pessoa;
+	
+	public Endereco() {}
+			
+	public Endereco(Long id, String logradouro,	String cep, int numero,	String cidade) {
+		this.id = id;
+		this.logradouro = logradouro;
+		this.cep = cep;
+		this.numero = numero;
+		this.cidade = cidade;
+	}
 
 	public Long getId() {
 		return id;
@@ -73,6 +89,17 @@ public class Endereco {
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
+
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+
+	
+
 
 	
 	

@@ -16,6 +16,6 @@ public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
 	
 	public List<Pessoa> findAllByNomeContainingIgnoreCase(@Param("nome") String nome);
 
-	public Optional<Pessoa> findByNome(String nome);
+
 
 }

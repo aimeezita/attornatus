@@ -1,6 +1,7 @@
 package br.com.attornatus.avaliacao.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,6 +41,15 @@ public class EnderecoController {
 			.orElse(ResponseEntity.notFound().build());
 	}
 	
+	
+	@GetMapping("/cep/{cep}")
+	public ResponseEntity<Endereco> getByCep(@PathVariable String cep){
+
+		return enderecoRepository.findByCep(cep)
+				.map(resposta -> ResponseEntity.ok(resposta))
+				.orElse(ResponseEntity.notFound().build());
+			
+	}
 	
 	@PostMapping
 	public ResponseEntity<Endereco> postEndereco(@Valid @RequestBody Endereco endereco) {
