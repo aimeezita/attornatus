@@ -34,7 +34,7 @@ public class Pessoa {
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate nascimento;
 	
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="endereco_id")
 	@JsonIgnoreProperties("pessoa")
 	private Endereco endereco;

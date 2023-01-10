@@ -36,7 +36,7 @@ public class Endereco {
 	@NotNull(message = "O atributo Cidade é obrigatório")
 	private String cidade;
 	
-	@OneToOne(mappedBy = "endereco")
+	@OneToOne(mappedBy = "endereco", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("endereco")
 	private Pessoa pessoa;
 	
