@@ -13,7 +13,7 @@ import br.com.attornatus.avaliacao.model.Endereco;
 public interface EnderecoRepository extends JpaRepository<Endereco, Long>{
 
 	
-	public Optional<Endereco> findByCep(String cep);
+	public List<Endereco> findByCep(String cep);
 	
 
 	public List<Endereco> findAllById(@Param("id") String id);
