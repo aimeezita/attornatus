@@ -78,8 +78,8 @@ public class PessoaController {
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> deletePessoa(@PathVariable Long id) {
 		
-		return pessoaRepository.findById(id)
-			.map(resposta -> {
+			return pessoaRepository.findById(id)
+			.map(resposta -> { 
 				pessoaRepository.deleteById(id);
 				return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 			})

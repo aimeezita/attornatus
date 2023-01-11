@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,11 +44,9 @@ public class EnderecoController {
 	
 	
 	@GetMapping("/cep/{cep}")
-	public ResponseEntity<Endereco> getByCep(@PathVariable String cep){
+	public ResponseEntity<List<Endereco>> getByCep(@PathVariable String cep){
 
-		return enderecoRepository.findByCep(cep)
-				.map(resposta -> ResponseEntity.ok(resposta))
-				.orElse(ResponseEntity.notFound().build());
+		return ResponseEntity.ok(enderecoRepository.findByCep(cep));
 			
 	}
 	
@@ -68,5 +67,15 @@ public class EnderecoController {
 
 	}
 	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deleteEndereco(@PathVariable Long id) {
+		
+		return enderecoRepository.findById(id)
+				.map(resposta -> {
+					enderecoRepository.deleteById(id);
+					return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+				})
+				.orElse(ResponseEntity.notFound().build());
+	}
 	
 }

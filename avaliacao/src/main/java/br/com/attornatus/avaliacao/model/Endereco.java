@@ -36,18 +36,18 @@ public class Endereco {
 	@NotNull(message = "O atributo Cidade é obrigatório")
 	private String cidade;
 	
-	@OneToOne(mappedBy = "endereco")
+	@OneToOne(mappedBy = "endereco", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("endereco")
 	private Pessoa pessoa;
 	
 	public Endereco() {}
 			
-	public Endereco(Long id, String logradouro,	String cep, int numero,	String cidade) {
+	public Endereco(Long id, String logradouro, int numero,	String cidade,String cep) {
 		this.id = id;
 		this.logradouro = logradouro;
-		this.cep = cep;
 		this.numero = numero;
 		this.cidade = cidade;
+		this.cep = cep;
 	}
 
 	public Long getId() {

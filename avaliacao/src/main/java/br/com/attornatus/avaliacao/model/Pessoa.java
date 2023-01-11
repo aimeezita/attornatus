@@ -31,11 +31,11 @@ public class Pessoa {
 	private String nome;
 	
 	@NotNull(message = "O atributo data de nascimento é obrigatório")
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate nascimento;
 	
-	@OneToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name="endereco_id")
+	@OneToOne(cascade = CascadeType.ALL)
+	//@JoinColumn(name="endereco_id")
 	@JsonIgnoreProperties("pessoa")
 	private Endereco endereco;
 
