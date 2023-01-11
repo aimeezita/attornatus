@@ -35,7 +35,7 @@ public class Pessoa {
 	private LocalDate nascimento;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="endereco_id")
+	//@JoinColumn(name="endereco_id")
 	@JsonIgnoreProperties("pessoa")
 	private Endereco endereco;
 
